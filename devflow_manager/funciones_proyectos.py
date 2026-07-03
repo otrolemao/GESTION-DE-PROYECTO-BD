@@ -1,0 +1,44 @@
+from database import proyectos, trabajadores
+
+def crear_proyecto():
+    print("\n--- Crear Nuevo Proyecto ---")
+    _id = input("ID del proyecto (ej: P01): ")
+    nombre = input("Nombre del proyecto: ")
+    descripcion = input("Descripcion: ")
+    fecha_inicio = input("Fecha de inicio (YYYY-MM-DD): ")
+    fecha_fin_estimada = input("Fecha de fin estimada (YYYY-MM-DD): ")
+    estado = "Planificacion"
+    equipo_ids = input("IDs de trabajadores separados por coma (ej: T01,T02): ").split(",")
+    equipo_ids = [id.strip() for id in equipo_ids if id.strip()]
+    documento = {
+        "_id": _id,
+        "nombre": nombre,
+        "descripcion": descripcion,
+        "fecha_inicio": fecha_inicio,
+        "fecha_fin_estimada": fecha_fin_estimada,
+        "estado": estado,
+        "equipo_ids": equipo_ids
+    }
+    try:
+        resultado = proyectos.insert_one(documento)
+        print(f"Proyecto creado con ID: {resultado.inserted_id}")
+    except Exception as e:
+        print(f"Error al crear proyecto: {e}")
+
+def listar_proyectos():
+    print("\n--- Listado de Proyectos ---")
+    for doc in proyectos.find():
+        print(f"ID: {doc['_id']} | Nombre: {doc['nombre']} | Estado: {doc['estado']} | Inicio: {doc['fecha_inicio']}")
+
+def asignar_trabajador_a_proyecto():
+    print("\n--- Asignar Trabajador a Proyecto ---")
+    id_proyecto = input("ID del proyecto: ")
+    id_trabajador = input("ID del trabajador a agregar: ")
+    resultado = proyectos.update_one(
+        {"_id": id_proyecto},
+        {"$addToSet": {"equipo_ids": id_trabajador}}
+    )
+    if resultado.modified_count > 0:
+        print("Trabajador asignado al proyecto")
+    else:
+        print("No se encontro el proyecto o el trabajador ya estaba asignado")
