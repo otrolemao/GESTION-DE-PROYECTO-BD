@@ -4,29 +4,28 @@ from funciones_proyectos import crear_proyecto, eliminar_trabajador_de_proyecto,
 from funciones_tareas import crear_tarea, listar_tareas_por_proyecto, actualizar_estado_tarea
 from funciones_reportes import ver_avance_proyecto, reporte_por_trabajador
 
-def mostrar_menu():
+
+def mostrar_menu_principal():
     print("\n" + "="*50)
     print("        DEVELOW MANAGER - GESTION DE PROYECTOS")
     print("="*50)
-    print("1. Registrar trabajador")
-    print("2. Listar trabajadores")
-    print("3. Actualizar trabajador")
-    print("4. Crear proyecto")
-    print("5. Listar proyectos")
-    print("6. Asignar trabajador a proyecto")
-    print("7. Crear tarea")
-    print("8. Listar tareas por proyecto")
-    print("9. Actualizar estado de tarea")
-    print("10. Ver avance de proyecto")
-    print("11. Generar reporte por trabajador")
-    print("12. Eliminar trabajador")
-    print("13. eliminar trabajador de proyecto")
-    print("16. Salir")
+    print("1. Gestion de trabajadores")
+    print("2. Gestion de proyectos")
+    print("3. Gestion de tareas")
+    print("4. Reportes")
+    print("0. Salir")
     print("="*50)
 
-def main():
+
+def menu_trabajadores():
     while True:
-        mostrar_menu()
+        print("\n--- MENU TRABAJADORES ---")
+        print("1. Registrar trabajador")
+        print("2. Listar trabajadores")
+        print("3. Actualizar trabajador")
+        print("4. Eliminar trabajador")
+        print("0. Volver al menu principal")
+
         opcion = input("Seleccione una opcion: ")
         if opcion == "1":
             registrar_trabajador()
@@ -35,31 +34,95 @@ def main():
         elif opcion == "3":
             actualizar_trabajador()
         elif opcion == "4":
-            crear_proyecto()
-        elif opcion == "5":
-            listar_proyectos()
-        elif opcion == "6":
-            asignar_trabajador_a_proyecto()
-        elif opcion == "7":
-            crear_tarea()
-        elif opcion == "8":
-            listar_tareas_por_proyecto()
-        elif opcion == "9":
-            actualizar_estado_tarea()
-        elif opcion == "10":
-            ver_avance_proyecto()
-        elif opcion == "11":
-            reporte_por_trabajador()
-        elif opcion == "12":
             eliminar_trabajador()
-        elif opcion == "13":
+        elif opcion == "0":
+            break
+        else:
+            print("Opcion no valida")
+
+
+def menu_proyectos():
+    while True:
+        print("\n--- MENU PROYECTOS ---")
+        print("1. Crear proyecto")
+        print("2. Listar proyectos")
+        print("3. Asignar trabajador a proyecto")
+        print("4. Eliminar trabajador de proyecto")
+        print("0. Volver al menu principal")
+
+        opcion = input("Seleccione una opcion: ")
+        if opcion == "1":
+            crear_proyecto()
+        elif opcion == "2":
+            listar_proyectos()
+        elif opcion == "3":
+            asignar_trabajador_a_proyecto()
+        elif opcion == "4":
             eliminar_trabajador_de_proyecto()
-        elif opcion == "16":
+        elif opcion == "0":
+            break
+        else:
+            print("Opcion no valida")
+
+
+def menu_tareas():
+    while True:
+        print("\n--- MENU TAREAS ---")
+        print("1. Crear tarea")
+        print("2. Listar tareas por proyecto")
+        print("3. Actualizar estado de tarea")
+        print("0. Volver al menu principal")
+
+        opcion = input("Seleccione una opcion: ")
+        if opcion == "1":
+            crear_tarea()
+        elif opcion == "2":
+            listar_tareas_por_proyecto()
+        elif opcion == "3":
+            actualizar_estado_tarea()
+        elif opcion == "0":
+            break
+        else:
+            print("Opcion no valida")
+
+
+def menu_reportes():
+    while True:
+        print("\n--- MENU REPORTES ---")
+        print("1. Ver avance de proyecto")
+        print("2. Generar reporte por trabajador")
+        print("0. Volver al menu principal")
+
+        opcion = input("Seleccione una opcion: ")
+        if opcion == "1":
+            ver_avance_proyecto()
+        elif opcion == "2":
+            reporte_por_trabajador()
+        elif opcion == "0":
+            break
+        else:
+            print("Opcion no valida")
+
+
+def main():
+    while True:
+        mostrar_menu_principal()
+        opcion = input("Seleccione una opcion: ")
+        if opcion == "1":
+            menu_trabajadores()
+        elif opcion == "2":
+            menu_proyectos()
+        elif opcion == "3":
+            menu_tareas()
+        elif opcion == "4":
+            menu_reportes()
+        elif opcion == "0":
             print("Saliendo del programa...")
             cliente.close()
             break
         else:
             print("Opcion no valida")
+
 
 if __name__ == "__main__":
     main()
