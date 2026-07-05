@@ -3,8 +3,11 @@ import pymongo.errors
 
 MONGO_HOST = "localhost"
 MONGO_PUERTO = "27017"
+MONGO_USUARIO = "admin"
+MONGO_PASSWORD = "Inacap321"   
+MONGO_AUTH_DB = "admin"
 MONGO_TIEMPO = 1000
-MONGO_URL = f"mongodb://{MONGO_HOST}:{MONGO_PUERTO}/"
+MONGO_URL = f"mongodb://{MONGO_USUARIO}:{MONGO_PASSWORD}@{MONGO_HOST}:{MONGO_PUERTO}/?authSource={MONGO_AUTH_DB}"
 MONGO_BD = "devflow"
 
 try:
