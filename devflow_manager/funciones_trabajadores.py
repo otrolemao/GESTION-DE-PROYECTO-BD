@@ -40,3 +40,12 @@ def actualizar_trabajador():
         print("Trabajador actualizado correctamente")
     else:
         print("No se encontro el trabajador o no hubo cambios")
+        
+def eliminar_trabajador():
+    print("\n--- Eliminar Trabajador ---")
+    _id = input("ID del trabajador a eliminar: ")
+    resultado = trabajadores.delete_one({"_id": _id})
+    if resultado.deleted_count > 0:
+        print("Trabajador eliminado correctamente")
+    else:
+        print("No se encontro el trabajador")
