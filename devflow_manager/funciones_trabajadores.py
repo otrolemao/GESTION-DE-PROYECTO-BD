@@ -42,10 +42,14 @@ def actualizar_trabajador():
         print("No se encontro el trabajador o no hubo cambios")
         
 def eliminar_trabajador():
+    for doc in trabajadores.find():
+        print(f"ID: {doc['_id']} | Nombre: {doc['nombre']} | Rol: {doc['rol_principal']} | Estado: {doc['estado']}")
+        print("--------------------------------------------------")
     print("\n--- Eliminar Trabajador ---")
     _id = input("ID del trabajador a eliminar: ")
     resultado = trabajadores.delete_one({"_id": _id})
     if resultado.deleted_count > 0:
-        print(f"ID: {resultado['_id']} | Nombre: {resultado['nombre']} | Rol: {resultado['rol_principal']} | Estado: {resultado['estado']}")
+        print("Trabajador eliminado correctamente")
     else:
         print("No se encontro el trabajador")
+

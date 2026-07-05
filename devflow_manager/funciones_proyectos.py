@@ -43,15 +43,15 @@ def asignar_trabajador_a_proyecto():
     else:
         print("No se encontro el proyecto o el trabajador ya estaba asignado")
 
-def eliminar_trabajador_de_proyecto():
-    print("\n--- Eliminar Trabajador de Proyecto ---")
-    id_proyecto = input("ID del proyecto: ")
-    id_trabajador = input("ID del trabajador a eliminar: ")
-    resultado = proyectos.update_one(
-        {"_id": id_proyecto},
-        {"$pull": {"equipo_ids": id_trabajador}}
-    )
-    if resultado.modified_count > 0:
-        print("Trabajador eliminado del proyecto")
+
+def eliminar_proyecto():
+    for doc in proyectos.find():
+        print(f"ID: {doc['_id']} | Nombre: {doc['nombre']} | Estado: {doc['estado']} | Inicio: {doc['fecha_inicio']}")
+        print("--------------------------------------------------")
+        print("\n--- Eliminar Proyecto ---")
+    id_proyecto = input("ID del proyecto a eliminar: ")
+    resultado = proyectos.delete_one({"_id": id_proyecto})
+    if resultado.deleted_count > 0:
+        print("Proyecto eliminado correctamente")
     else:
-        print("No se encontro el proyecto o el trabajador no estaba asignado")
+        print("No se encontro el proyecto")

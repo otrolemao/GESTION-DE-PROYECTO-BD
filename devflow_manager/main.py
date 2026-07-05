@@ -1,6 +1,6 @@
 from database import cliente
 from funciones_trabajadores import eliminar_trabajador, registrar_trabajador, listar_trabajadores, actualizar_trabajador
-from funciones_proyectos import crear_proyecto, eliminar_trabajador_de_proyecto, listar_proyectos, asignar_trabajador_a_proyecto
+from funciones_proyectos import crear_proyecto, eliminar_proyecto, eliminar_trabajador_de_proyecto, listar_proyectos, asignar_trabajador_a_proyecto
 from funciones_tareas import crear_tarea, listar_tareas_por_proyecto, actualizar_estado_tarea
 from funciones_reportes import ver_avance_proyecto, reporte_por_trabajador
 
@@ -47,7 +47,7 @@ def menu_proyectos():
         print("1. Crear proyecto")
         print("2. Listar proyectos")
         print("3. Asignar trabajador a proyecto")
-        print("4. Eliminar trabajador de proyecto")
+        print("4. Eliminar proyecto")
         print("0. Volver al menu principal")
 
         opcion = input("Seleccione una opcion: ")
@@ -58,7 +58,7 @@ def menu_proyectos():
         elif opcion == "3":
             asignar_trabajador_a_proyecto()
         elif opcion == "4":
-            eliminar_trabajador_de_proyecto()
+            eliminar_proyecto()
         elif opcion == "0":
             break
         else:
