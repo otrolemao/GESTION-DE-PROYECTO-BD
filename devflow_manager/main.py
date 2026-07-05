@@ -1,5 +1,5 @@
 from database import cliente
-from funciones_trabajadores import registrar_trabajador, listar_trabajadores, actualizar_trabajador
+from funciones_trabajadores import eliminar_trabajador, registrar_trabajador, listar_trabajadores, actualizar_trabajador
 from funciones_proyectos import crear_proyecto, listar_proyectos, asignar_trabajador_a_proyecto
 from funciones_tareas import crear_tarea, listar_tareas_por_proyecto, actualizar_estado_tarea
 from funciones_reportes import ver_avance_proyecto, reporte_por_trabajador
@@ -19,7 +19,8 @@ def mostrar_menu():
     print("9. Actualizar estado de tarea")
     print("10. Ver avance de proyecto")
     print("11. Generar reporte por trabajador")
-    print("12. Salir")
+    print("12. Eliminar trabajador")
+    print("13. Salir")
     print("="*50)
 
 def main():
@@ -49,6 +50,8 @@ def main():
         elif opcion == "11":
             reporte_por_trabajador()
         elif opcion == "12":
+            eliminar_trabajador()
+        elif opcion == "13":
             print("Saliendo del programa...")
             cliente.close()
             break
