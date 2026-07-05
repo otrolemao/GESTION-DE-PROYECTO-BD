@@ -1,4 +1,4 @@
-from database import proyectos, trabajadores
+from database import proyectos, trabajadores, tareas
 
 def crear_proyecto():
     print("\n--- Crear Nuevo Proyecto ---")
@@ -46,6 +46,7 @@ def asignar_trabajador_a_proyecto():
 
 def eliminar_proyecto():
     for doc in proyectos.find():
+        print("--------------------------------------------------")
         print(f"ID: {doc['_id']} | Nombre: {doc['nombre']} | Estado: {doc['estado']} | Inicio: {doc['fecha_inicio']}")
         print("--------------------------------------------------")
         print("\n--- Eliminar Proyecto ---")
@@ -55,3 +56,4 @@ def eliminar_proyecto():
         print("Proyecto eliminado correctamente")
     else:
         print("No se encontro el proyecto")
+        

@@ -44,3 +44,16 @@ def actualizar_estado_tarea():
         print("Estado actualizado correctamente")
     else:
         print("No se encontro la tarea")
+
+def eliminar_tarea():
+    for doc in tareas.find():
+        print("--------------------------------------------------")
+        print(f"ID: {doc['_id']} | Tarea: {doc['nombre_tarea']} | Responsable: {doc['trabajador_id']} | Estado: {doc['estado']}")
+        print("--------------------------------------------------")
+    print("\n--- Eliminar Tarea ---")
+    id_tarea = input("ID de la tarea a eliminar: ")
+    resultado = tareas.delete_one({"_id": id_tarea})
+    if resultado.deleted_count > 0:
+        print("Tarea eliminada correctamente")
+    else:
+        print("No se encontro la tarea")

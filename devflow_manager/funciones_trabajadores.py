@@ -43,6 +43,7 @@ def actualizar_trabajador():
         
 def eliminar_trabajador():
     for doc in trabajadores.find():
+        print("--------------------------------------------------")
         print(f"ID: {doc['_id']} | Nombre: {doc['nombre']} | Rol: {doc['rol_principal']} | Estado: {doc['estado']}")
         print("--------------------------------------------------")
     print("\n--- Eliminar Trabajador ---")
