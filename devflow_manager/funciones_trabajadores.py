@@ -46,6 +46,6 @@ def eliminar_trabajador():
     _id = input("ID del trabajador a eliminar: ")
     resultado = trabajadores.delete_one({"_id": _id})
     if resultado.deleted_count > 0:
-        print("Trabajador eliminado correctamente")
+        print(f"ID: {resultado['_id']} | Nombre: {resultado['nombre']} | Rol: {resultado['rol_principal']} | Estado: {resultado['estado']}")
     else:
         print("No se encontro el trabajador")
