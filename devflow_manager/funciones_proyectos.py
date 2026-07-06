@@ -1,4 +1,4 @@
-from database import proyectos, trabajadores, tareas
+from database import proyectos, trabajadores
 
 def crear_proyecto():
     print("\n--- Crear Nuevo Proyecto ---")
@@ -31,6 +31,14 @@ def listar_proyectos():
         print(f"ID: {doc['_id']} | Nombre: {doc['nombre']} | Estado: {doc['estado']} | Inicio: {doc['fecha_inicio']}")
 
 def asignar_trabajador_a_proyecto():
+    for doc in trabajadores.find():
+        print(" Lista trabajadores:")
+        print(f"ID: {doc['_id']} | Nombre: {doc['nombre']} | Rol: {doc['rol_principal']} | Estado: {doc['estado']}")
+        print("--------------------------------------------------")
+    for doc in proyectos.find():
+        print(" Lista proyectos:")
+        print(f"ID: {doc['_id']} | Nombre: {doc['nombre']} | Estado: {doc['estado']} | Inicio: {doc['fecha_inicio']}")
+        print("--------------------------------------------------")
     print("\n--- Asignar Trabajador a Proyecto ---")
     id_proyecto = input("ID del proyecto: ")
     id_trabajador = input("ID del trabajador a agregar: ")
