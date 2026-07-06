@@ -2,6 +2,7 @@ from database import proyectos, tareas, trabajadores
 
 def ver_avance_proyecto():
     for doc in proyectos.find():
+        print("--------------------------------------------------")
         print(f"ID: {doc['_id']} | Nombre: {doc['nombre']} | Estado: {doc['estado']} | Inicio: {doc['fecha_inicio']}")
         print("--------------------------------------------------")
     print("\n--- Avance de Proyecto ---")

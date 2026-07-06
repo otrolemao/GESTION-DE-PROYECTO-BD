@@ -1,8 +1,20 @@
+from sympy import re
+
 from database import trabajadores
 
 def registrar_trabajador():
     print("\n--- Registrar Nuevo Trabajador ---")
-    _id = input("ID del trabajador (ej: T01): ")
+    _id = input("ID del trabajador (ej: T01): ")\
+    
+    if trabajadores.find_one({"_id": _id}):
+        print("ID ya existe. Por favor, elija otro.")
+        return     
+    
+    if not _id.startswith("T") or not _id[1:].isdigit():
+        print("ID invalido. Debe comenzar con 'T' seguido de numeros (ej: T01).")
+        return
+    
+    
     nombre = input("Nombre completo: ")
     correo = input("Correo: ")
     rol_principal = input("Rol principal (Backend/Frontend/QA/UX/Scrum Master): ")
@@ -53,4 +65,6 @@ def eliminar_trabajador():
         print("Trabajador eliminado correctamente")
     else:
         print("No se encontro el trabajador")
+
+
 
