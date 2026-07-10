@@ -2,6 +2,7 @@ from sympy import re
 
 from database import trabajadores
 
+
 def registrar_trabajador():
     print("\n--- Registrar Nuevo Trabajador ---")
     _id = input("ID del trabajador (ej: T01): ")\
