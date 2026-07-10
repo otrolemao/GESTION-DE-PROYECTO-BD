@@ -3,7 +3,13 @@ from database import tareas, proyectos, trabajadores
 def crear_tarea():
     print("\n--- Crear Nueva Tarea ---")
     _id = input("ID de la tarea (ej: TA01): ")
+    if tareas.find_one({"_id": _id}):
+        print("ID ya existe. Por favor, elija otro.")
+        return
     proyecto_id = input("ID del proyecto asociado: ")
+    if not proyectos.find_one({"_id": proyecto_id}):
+        print("Proyecto no encontrado.")
+        return
     trabajador_id = input("ID del trabajador responsable: ")
     nombre_tarea = input("Nombre de la tarea: ")
     descripcion = input("Descripcion: ")

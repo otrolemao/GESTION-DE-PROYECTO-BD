@@ -11,9 +11,8 @@ def registrar_trabajador():
         return     
     
     if not _id.startswith("T") or not _id[1:].isdigit():
-        print("ID invalido. Debe comenzar con 'T' seguido de numeros (ej: T01).")
+        print("ID inválido. Debe comenzar con 'T' seguido de números (ej: T01).")
         return
-    
     
     nombre = input("Nombre completo: ")
     correo = input("Correo: ")

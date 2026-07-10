@@ -3,7 +3,13 @@ from database import proyectos, trabajadores
 def crear_proyecto():
     print("\n--- Crear Nuevo Proyecto ---")
     _id = input("ID del proyecto (ej: P01): ")
+    if proyectos.find_one({"_id": _id}):
+        print("ID ya existe. Por favor, elija otro.")
+        return
     nombre = input("Nombre del proyecto: ")
+    if not _id.startswith("P") or not _id[1:].isdigit():
+        print("ID inválido. Debe comenzar con 'P' seguido de números (ej: P01).")
+        return
     descripcion = input("Descripcion: ")
     fecha_inicio = input("Fecha de inicio (YYYY-MM-DD): ")
     fecha_fin_estimada = input("Fecha de fin estimada (YYYY-MM-DD): ")
